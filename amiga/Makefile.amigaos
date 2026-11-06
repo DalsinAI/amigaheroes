@@ -1,0 +1,127 @@
+# Heroes 0.21 for AmigaOS 3.x, 68040/68060 + FPU, on OpenGPU's SDL 1.2
+# (sdl12-compat).
+#
+#   make -f amiga/Makefile.amigaos -j2 dist \
+#        STOVE=/path/to/openamigagcc-16.2.0-open4 \
+#        NDK=/path/to/OpenNDK/Include_H SDLKIT=/path/to/opengpu-sdk
+#
+# src/Makefile.am's heroes with the SDL video, keyboard and joystick drivers
+# and the SDL_mixer sound driver (configure's choice when it finds SDL), lib/
+# and src/lvl, with amiga/config.h for configure's (no gettext: English).
+# src/media/sdl/keysdef.c is made from the kit's SDL_keysym.h, as
+# src/media/Makefile.inc makes it. SDLKIT is the OpenGPU developer kit:
+# libSDL.a, sdl12-compat on SDL2.module. It has no SDL_mixer 1.2: the Team's
+# amiga/sdl_mixer_lite.c (WAV, with libmikmod 3.3.16 for the music:
+# amiga/libmikmod, its player, XM loader and no-sound driver) stands in.
+# amiga/amiga_paths.c folds the "//" in Heroes' joined file names
+# (-Wl,--wrap=fopen and the others): to AmigaDOS that is the parent drawer.
+
+STOVE   ?= $(HOME)/CradleLab/toolchain/openamigagcc-16.2.0-open4-x86_64-linux
+NDK     ?= $(HOME)/CradleLab/gfopensdk/OpenNDK/Include_H
+SDLKIT  ?= /mnt/amigachrome/team2/deps/opengpu-sdk
+CC      = $(STOVE)/bin/m68k-amigaos-gcc
+STRIP   = $(STOVE)/bin/m68k-amigaos-strip
+CPU     ?= -m68040 -m68881
+# -fno-tree-loop-distribute-patterns: GCC 16's loop miscompile (the kit's
+# sdl2-config gives it for GCC 16 too).
+OPT     ?= -O2 -fomit-frame-pointer -fno-tree-loop-distribute-patterns
+
+BUILD   = build/amigaos
+OBJDIR  = $(BUILD)/obj
+GEN     = $(BUILD)/gen
+PROG    = Heroes
+OUT     = dist/Heroes
+
+DEFS    = -D__amigaos__ -DNDEBUG -DHAVE_CONFIG_H
+INC     = -Iamiga -Iamiga/include/SDL -Ilib -Iintl -Isrc/lvl -Isrc/media -Isrc/sys -Isrc \
+          -I$(SDLKIT)/include/SDL -I$(SDLKIT)/include
+CFLAGS  = -noixemul $(OPT) $(CPU) -fno-common -MMD -MP -std=gnu89 -w
+LDFLAGS = -noixemul $(CPU) -Wl,--wrap=getenv -Wl,--wrap=fopen -Wl,--wrap=open \
+          -Wl,--wrap=opendir -Wl,--wrap=stat -Wl,--wrap=mkdir
+LIBS    = -L$(SDLKIT)/lib -lSDL -lpthread -lm
+
+TOP     = argv bonus camera const debughash debugmsg endscroll errors explosions extras fader \
+          fontdata gameid hedlite helptext hendian heroes intro items levellst locales menus misc \
+          musicfiles parafmt pcx pendulum people persona pixelize prefs readmake relocate render \
+          renderdata rsc_files rsc_files_hash savegame scores scrtools sprglauto sprglenz sprite \
+          spropaque sprprog sprprogwav sprrle sprshade sprtext sprunish sprzcol timer userconf \
+          userdir vars visuals
+SRC     = $(TOP:%=src/%.c) \
+          src/lvl/de_body.c src/lvl/de_head.c src/lvl/en_body.c src/lvl/en_head.c src/lvl/free.c \
+          src/lvl/in_body.c src/lvl/load.c src/lvl/privacc.c src/lvl/save.c \
+          src/media/keyb.c src/media/video.c src/media/strack.c src/media/sfx.c \
+          src/media/sdl/keyb.c src/media/sdl/keyvalues.c src/media/sdl/video.c \
+          src/media/sdl/joystick.c src/media/sdl_mixer/strack.c src/media/sdl_mixer/sfx.c \
+          src/sys/std/main.c \
+          lib/basename.c lib/cast.c lib/dirname.c lib/error.c lib/filelock.c lib/fstrcmp.c \
+          lib/getshline.c lib/hash.c lib/isdir.c lib/stripslash.c lib/xmalloc.c lib/xstrdup.c \
+          lib/xstrduplwr.c lib/getopt.c lib/getopt1.c
+CSRC    = amiga/stack.c amiga/amiga_env.c amiga/amiga_paths.c amiga/sdl_mixer_lite.c
+MIKMOD_SRC = $(wildcard amiga/libmikmod/*.c)
+MIKMOD_CFLAGS = -noixemul -O2 $(CPU) -fno-common -MMD -MP -std=gnu99 -w -DMIKMOD_BUILD \
+          -DMIKMOD_STATIC -DHAVE_LIMITS_H -DHAVE_SNPRINTF -DHAVE_UNISTD_H -DWORDS_BIGENDIAN=1 \
+          -DNO_DEPACKERS -DNO_HQMIXER -Iamiga/libmikmod -I$(NDK)
+
+OBJS    = $(SRC:%.c=$(OBJDIR)/%.o) $(OBJDIR)/gen/keysdef.o $(CSRC:%.c=$(OBJDIR)/%.o) \
+          $(MIKMOD_SRC:%.c=$(OBJDIR)/%.o)
+ICONS   = $(wildcard amiga/icons/*.info)
+
+all: $(BUILD)/$(PROG)
+
+$(BUILD)/$(PROG): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@.debug $(OBJS) $(LIBS)
+	$(STRIP) -o $@ $@.debug
+
+# as src/media/Makefile.inc's rule for media/sdl/keysdef.c
+$(GEN)/keysdef.c: $(SDLKIT)/include/SDL/SDL_keysym.h
+	@mkdir -p $(dir $@)
+	awk 'BEGIN { print "/* Do not edit! Made by amiga/Makefile.amigaos from SDL_keysym.h */\n#include \"system.h\"\n#include <SDL.h>\n#include \"keysdef.h\"\nconst struct keynames_s keynames[] = {" } \
+	  $$1 ~ /SDLK_/ { print "\t{ \""toupper(substr($$1,index($$1,"_")+1))"\",", $$1,"}," } \
+	  END { print "\t{ 0, 0 }};\n" }' < $< > $@
+
+$(OBJDIR)/gen/keysdef.o: $(GEN)/keysdef.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(DEFS) $(INC) -c -o $@ $<
+
+$(OBJDIR)/amiga/libmikmod/%.o: amiga/libmikmod/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(MIKMOD_CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/amiga/%.o: amiga/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -std=gnu99 -Iamiga/include/SDL -Iamiga/libmikmod -I$(SDLKIT)/include/SDL \
+	  -I$(NDK) -DMIKMOD_STATIC -Wall -c -o $@ $<
+
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(DEFS) $(INC) -c -o $@ $<
+
+# The drawer: the program; data/ laid out as Heroes installs its data
+# (the heroes-data, heroes-sound-effects and heroes-sound-tracks packages:
+# levels, pics, tilesets, sfx and mod, and src/etc's heroesrc); upstream's
+# manual (heroes.html), ReadMe and the licence. The settings, scores and
+# saved games are kept in the drawer's user/.heroes.
+DP      = datapacks
+dist: $(BUILD)/$(PROG) $(ICONS) AMIGA_PORT.md
+	rm -rf $(OUT) && mkdir -p $(OUT)/data/etc $(OUT)/data/sfx $(OUT)/data/mod
+	cp $(BUILD)/$(PROG) $(OUT)/
+	cp -R $(DP)/heroes-data-1.5/levels $(DP)/heroes-data-1.5/pics $(DP)/heroes-data-1.5/tilesets $(OUT)/data/
+	cp $(DP)/heroes-sound-effects-1.0/*.wav $(DP)/heroes-sound-effects-1.0/sfx.conf $(OUT)/data/sfx/
+	cp $(DP)/heroes-sound-tracks-1.0/*.xm $(DP)/heroes-sound-tracks-1.0/sound.conf $(OUT)/data/mod/
+	cp src/etc/heroesrc $(OUT)/data/etc/
+	find $(OUT)/data -name 'Makefile*' -delete
+	cp AMIGA_PORT.md $(OUT)/ReadMe
+	cp doc/heroes.html $(OUT)/
+	cp COPYING $(OUT)/COPYING.txt
+	cp amiga/libmikmod/COPYING.LIB $(OUT)/COPYING-libmikmod.txt
+	cp amiga/icons/Heroes.info amiga/icons/ReadMe.info $(OUT)/
+	for f in COPYING.txt COPYING-libmikmod.txt heroes.html; do cp amiga/icons/ReadMe.info $(OUT)/$$f.info; done
+	cp amiga/icons/Folder.info $(OUT)/data.info
+	cp amiga/icons/Heroes-drawer.info dist/Heroes.info
+
+-include $(OBJS:.o=.d)
+
+clean:
+	rm -rf $(BUILD)
+
+.PHONY: all clean dist
