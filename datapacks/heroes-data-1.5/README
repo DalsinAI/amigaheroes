@@ -1,0 +1,39 @@
+Description
+===========
+
+  This package contains the data used by Heroes.  It can be installed
+separately.
+
+
+License
+=======
+
+   These files are distributed under the terms of the GNU General
+Public License.  See the file `COPYING' for details.
+
+
+Latest version
+==============
+
+  New versions of this package will be available at SourceForge.
+See the home page of Heroes:  http://heroes.sourceforge.net/
+
+
+Installation
+============
+
+  This package use autoconf and automake.  See the file `INSTALL' for
+generic instructions.  To have these data integrated in Heroes, use
+the same --prefix and --datadir options when configuring both
+packages.
+
+
+Bug reports, feed-back
+======================
+
+ Two mailing-lists of interest:
+
+   heroes-discuss@lists.sourceforge.net
+   heroes-bugs@lists.sourceforge.net
+
+ See http://heroes.sourceforge.net/lists.html for details.

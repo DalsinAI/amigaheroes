@@ -1,0 +1,39 @@
+Heroes-data 1.5		March 11, 2002
+
+	* Bug fix in 11 levels (a ramp was misconfigured, and vehicle
+	would not speed up or slow down when running over it).
+
+Heroes-data 1.4		December 12, 2001
+
+	* Support Latin-1 characters in `help reader' and `big' fonts.
+
+Heroes-data 1.3		July 26, 2001
+
+	* Bug fix:
+	  - Fix starting positions of level #70 (niv106.lvl).
+
+Heroes-data 1.2		July 25, 2001
+
+	* Bug fixes:
+	  - 6 levels had empty tiles configured as speed tiles.
+          - one of them had a few unaccessible place not marked so,
+	    resulting in lemming being droped in unreachable places.
+	* Packaging cosmetics.
+
+Heroes-data 1.1		May 23, 2001
+
+	* No changes, just bumped the version number for public release.
+
+Heroes-data 1.0a	May 8, 2001
+
+	* Unlabel the joypad and board pictures to allow
+	  internationalization of the labels.
+	* Add a new arrow to replace the tutorial arrow.
+
+Heroes-data 1.0		September 2, 2000
+
+	* First release.
+
+Local Variables:
+mode: indented-text
+End:

@@ -1,0 +1,12 @@
+I am pleased to announce the release of Heroes-data 1.5
+
+This package contains the data (levels, pictures) used by the game
+Heroes.  The source for the game itself is in a separate package, and
+the sound-tracks and sound-effects in two other packages.
+
+You are invited to visit the following links:
+  home page:    http://heroes.sourceforge.net/
+  screenshots:  http://heroes.sourceforge.net/screenshots.html
+  download:     http://heroes.sourceforge.net/download.html
+
+This release fixes a minor bug in 11 levels.
