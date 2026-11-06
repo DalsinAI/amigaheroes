@@ -19,7 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
 
 /* Support of prototyping when possible */
 # ifndef PARAMS
-#   if PROTOTYPES
+#   if defined PROTOTYPES || (defined __STDC__ && __STDC__)
 #     define PARAMS(protos) protos
 #   else /* no PROTOTYPES */
 #     define PARAMS(protos) ()

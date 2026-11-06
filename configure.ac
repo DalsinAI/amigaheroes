@@ -21,7 +21,7 @@ AC_PREREQ(2.50)
 AC_INIT([heroes], [0.21], [heroes-bugs@lists.sourceforge.net])
 AC_CONFIG_AUX_DIR(tools)
 AC_CONFIG_SRCDIR([src/heroes.c])
-AM_INIT_AUTOMAKE([heroes], [0.21])
+AM_INIT_AUTOMAKE
 
 AC_COPYRIGHT([Copyright 2000, 2001, 2002  Alexandre Duret-Lutz])
 
@@ -112,7 +112,7 @@ AC_HEADER_STAT
 # Checks for typedefs, structures, and compiler characteristics.
 # ==============================================================
 
-AM_C_PROTOTYPES
+#AM_C_PROTOTYPES
 AC_C_CONST
 AC_TYPE_UID_T     dnl This checks for gid_t too.
 AC_CHECK_TYPES([ssize_t])
@@ -164,7 +164,7 @@ jm_AC_DOS
 # Internationalization.
 # =====================
 
-ALL_LINGUAS="de fr it nl pt_BR"
+ALL_LINGUAS="de fr it nl pt_BR sv"
 AM_GNU_GETTEXT(,[need-ngettext])
 
 # ===================================

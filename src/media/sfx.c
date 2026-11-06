@@ -92,7 +92,7 @@ read_sfx_conf (void)
       if (*conf != 0)
 	dperror ("fopen");
       wmsg (_("Cannot open %s, disabling sound-effects\n"
-	      "(run with -X to supress this message)."), conf);
+	      "(run with -X to suppress this message)."), conf);
       nosfx = 1;
       free (conf);
       return 0;

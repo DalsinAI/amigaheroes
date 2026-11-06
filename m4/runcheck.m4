@@ -4,9 +4,9 @@ dnl not fail (usually due to some unloadable libraries),
 
 AC_DEFUN([adl_RUN_CHECK],
 [AC_TRY_RUN(
-[main ()
+[int main ()
 {
-  exit (0);
+  return 0;
 }],,
 [AC_MSG_ERROR([===
 Compiled programs no longer run whith this setup.  Most usually this

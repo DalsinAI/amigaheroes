@@ -24,10 +24,12 @@
 void
 lvl_free (a_level *lvl)
 {
-  XFREE0 (lvl->private->tile);
-  XFREE0 (lvl->private->sound_track_alias);
-  XFREE0 (lvl->private->tile_sprite_map_basename);
-  XFREE0 (lvl->private);
+  if (lvl->private) {
+    XFREE0 (lvl->private->tile);
+    XFREE0 (lvl->private->sound_track_alias);
+    XFREE0 (lvl->private->tile_sprite_map_basename);
+    XFREE0 (lvl->private);
+  }
   XFREE0 (lvl->square_type);
   XFREE0 (lvl->square_walls_out);
   XFREE0 (lvl->square_direction);

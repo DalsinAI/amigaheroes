@@ -14,7 +14,7 @@ if test "${with_sdl_mixer-yes}" != no; then
   # so that AC_caolan_CHECK_PACKAGE can find SDL_mixer.h in the same directory.
   tmp_CPPFLAGS="$CPPFLAGS"
   CPPFLAGS="$SDL_CFLAGS $CPPFLAGS"
-  tmp_LIBS="$CPPLIBS"
+  tmp_LIBS="$LIBS"
   LIBS="$SDL_LIBS $LIBS"
 
   AC_caolan_CHECK_PACKAGE([SDL_mixer], [Mix_OpenAudio],

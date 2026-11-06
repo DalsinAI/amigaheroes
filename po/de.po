@@ -1,4 +1,4 @@
-# verdeutschlichte Meldungsdatei fuer Heroess.
+# verdeutschlichte Meldungsdatei für Heroes.
 # Copyright 2000, 2001  Free Software Foundation, Inc.
 # Copyright is left from Hermann J. Beckers, beckers@st-oneline.de  2001.
 #
@@ -180,7 +180,7 @@ msgstr ""
 "  -q, --quiet             keine Warnungen anzeigen\n"
 "  -Q, --really-quiet      auch keine Fehlermeldungen anzeigen\n"
 "  -v, --verbose=Kanäle    de/aktiviere DEBUG-Kanäle\n"
-"                            (siehe --list=debug fuer verfügbare Kanäle)\n"
+"                            (siehe --list=debug für verfügbare Kanäle)\n"
 "  -l, --list=WORT         zeige interne Informationen, für WORT\n"
 "                          kann 'debug', 'resources', 'sound-drivers'\n"
 "                          oder 'sound-tracks' eingesetzt werden.\n"
@@ -283,7 +283,7 @@ msgstr "-n ist eine veraltete Option, benutze besser --list=sound-drivers"
 #: src/bonus.c:324 src/bonus.c:329
 #, c-format
 msgid "SIZE IS %d"
-msgstr "LAENGE: %d"
+msgstr "LÄNGE: %d"
 
 #: src/bonus.c:334
 msgid "SPEEDED UP"
@@ -330,7 +330,7 @@ msgstr "Zeichen '%c' (in Meldung '%s') kann nicht dargestellt werden"
 #: src/hedlite.c:1622
 #, c-format
 msgid "Cannot create directory `%s'."
-msgstr "Kann Verzeicnis `%s' nicht anlegen."
+msgstr "Kann Verzeichnis `%s' nicht anlegen."
 
 #: src/hedlite.c:1679 src/hedlite.c:1686
 #, c-format
@@ -532,7 +532,7 @@ msgstr ""
 "%{>>}%yQUEST\n"
 "\n"
 "%{>>>}Der %yQUEST%w-Modus erlaubt Dir, alle 100 von HEROES angebotenen Level "
-"zu spielen. Du mußt eine bestimmte Anzahl (10) von Länge+1 Bonusobjekten und "
+"zu spielen. Du musst eine bestimmte Anzahl (10) von Länge+1 Bonusobjekten und "
 "dann den Level-Ende-Bonus erreichen, der Dich zum nächsten Level bringt.\n"
 "%{>>>}%{img L 20 176 20 22}Level-Ende\n"
 "%{img R 0 0 20 22}%{flushright}Länge+1\n"
@@ -550,9 +550,9 @@ msgstr ""
 "\n"
 "%{img BLVr 130 9 30 57}%{>>}%yKILL THEM ALL\n"
 "\n"
-"%{>>>}Der %yKILL THEM ALL%w-Modus hat nur eine einzige Regel: Du mußt alle "
+"%{>>>}Der %yKILL THEM ALL%w-Modus hat nur eine einzige Regel: Du musst alle "
 "Lemminge Deiner Gegner erledigen. Einst wurde gesagt: \"Es kann nur einen "
-"geben\". Stelle sicher, daß er Dir gehört!\n"
+"geben\". Stelle sicher, dass er Dir gehört!\n"
 "\n"
 "%{img LG 131 70 20 100}\n"
 "%{img LG 151 70 20 80}Sie sind unter uns, finde sie!\n"
@@ -1010,7 +1010,7 @@ msgstr "fehlender Dateiname."
 #: src/levellst.c:53
 #, c-format
 msgid "cannot open directory %s"
-msgstr "Kann Verzeicnis '%s' nicht öffnen."
+msgstr "Kann Verzeichnis '%s' nicht öffnen."
 
 #. TRANS: in QUEST mode, the player goes throught all the levels, but
 #. have to search for specific powerups in order to jump to the next
@@ -1515,7 +1515,7 @@ msgstr ""
 "Stelle verschoben.\n"
 "Im letzteren Fall ist es wahrscheinlich ausreichend, die Umgebungsvariable\n"
 "HEROES_PREFIX auf die neue Position zu setzen. Eine weitere Möglichkeit\n"
-"ist es, HEROES_DEBUG=system zu setzen, um zu sehen, an welcher StelleHeroes "
+"ist es, HEROES_DEBUG=system zu setzen, um zu sehen, an welcher Stelle Heroes "
 "danach sucht.\n"
 "Wenn alles nicht hilft, kontaktiere <heroes-bugs@lists.sourceforge.net>\n"
 
@@ -1654,7 +1654,7 @@ msgstr "%s: Kein solcher Kanal (--list=debug listet alle verfügbaren Kanäle)"
 #, c-format
 msgid ""
 "Cannot open %s, disabling sound-effects\n"
-"(run with -X to supress this message)."
+"(run with -X to suppress this message)."
 msgstr ""
 "Kann %s nicht öffnen, Sound deaktiviert.\n"
 "(-X unterdrückt diese Meldung)."
@@ -1676,7 +1676,7 @@ msgstr "Heroes wurde ohne Sound-Unterstützung compiliert."
 #. FIXME: ask to send a bug report with a trace
 #: src/media/ggi/video.c:174
 msgid "failed to get any direct buffer for this visual"
-msgstr "Konnte keinen Direkt-Puffer fuer dieses Visual bekommen"
+msgstr "Konnte keinen Direkt-Puffer für dieses Visual bekommen"
 
 #. TRANS: a `visual' is associated by LibGGI to a display.  You can
 #. actually call it a `display', this makes no big difference.
@@ -1691,7 +1691,7 @@ msgstr "Kann keine korrekte Anzeige einrichten."
 #: src/media/ggi/video.c:211
 #, fuzzy, c-format
 msgid "negotiated video mode is too small (width=%d, height=%d)"
-msgstr "Videomodus ist zu klein (Breite=%d, Hoehe=%d)"
+msgstr "Videomodus ist zu klein (Breite=%d, Höhe=%d)"
 
 #. TRANS: `display-memory' is the name of a LibGGI driver and
 #. make no sense to translate.
@@ -1760,7 +1760,7 @@ msgid ""
 "Argument '%s' out of bounds, must be between %d and %d.\n"
 "Use '%s --help' for more information."
 msgstr ""
-"Argument '%s': Bereichsüberschreitung, muß zwischen %d und %d liegen.\n"
+"Argument '%s': Bereichsüberschreitung, muss zwischen %d und %d liegen.\n"
 "Benutze '%s --help' für weitere Informationen."
 
 #: src/media/sdl/video.c:114
@@ -1806,8 +1806,8 @@ msgstr "%s: zulässige Klangoptionen sind freq=nnn und buffers=nnn"
 #~ "  sound-drivers         print the sound driver list\n"
 #~ "  sound-tracks\t\tprint the sound track list"
 #~ msgstr ""
-#~ "Benutze `-lWORT' oder `--list=WORT'; fuer WORT zulaessig:\n"
-#~ "  debug                 alle Debug-Kanaele anzeigen\n"
+#~ "Benutze `-lWORT' oder `--list=WORT'; für WORT zulässig:\n"
+#~ "  debug                 alle Debug-Kanäle anzeigen\n"
 #~ "  resources             Ressourcenliste anzeigen\n"
 #~ "  sound-drivers         Sound-Treiberliste anzeigen\n"
 #~ "  sound-tracks          Klangliste anzeigen"
@@ -1819,7 +1819,7 @@ msgstr "%s: zulässige Klangoptionen sind freq=nnn und buffers=nnn"
 #~ msgstr "Fehler %d beim Laden von Level %s"
 
 #~ msgid "Cannot open %s."
-#~ msgstr "Kann %s nicht oeffnen."
+#~ msgstr "Kann %s nicht öffnen."
 
 #~ msgid ""
 #~ "\n"
@@ -1897,7 +1897,7 @@ msgstr "%s: zulässige Klangoptionen sind freq=nnn und buffers=nnn"
 #~ msgstr "CODE:"
 
 #~ msgid "PLEASE READ THE LIST OF OTHER CONTRIBUTORS IN THE FILE 'THANKS'"
-#~ msgstr "WEITERE MITWIRKENDE SIND IN DER DATEI 'THANKS' AUFGEFUEHRT."
+#~ msgstr "WEITERE MITWIRKENDE SIND IN DER DATEI 'THANKS' AUFGEFÜHRT."
 
 #~ msgid "%d LIVES LEFT"
-#~ msgstr "%d Leben uebrig"
+#~ msgstr "%d Leben übrig"

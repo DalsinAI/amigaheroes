@@ -1992,7 +1992,7 @@ update_player (int c)
       else
 	player[c].vitp = player[c].vitt;
     else if (player[c].vitp > player[c].vitt) {
-      if (player[c].vitp + 512 > player[c].vitt)
+      if (player[c].vitp - 512 > player[c].vitt)
 	player[c].vitp -= 512;
       else
 	player[c].vitp = player[c].vitt;
@@ -2505,6 +2505,7 @@ play_demo (void)
 
   free_htimer (demo_htimer);
   uninit_keyboard_map ();
+  key_or_joy_reset ();
   unload_level ();
   nbr_tiles_cols = 15;
   in_menu = 1;
@@ -3001,6 +3002,7 @@ play_game (char cont)
     dmsg (D_SECTION, "print end level info");
 
     uninit_keyboard_map ();
+    key_or_joy_reset ();
     l = 0;
     if (level_is_finished != 15)
       if (player[level_is_finished - 1].cpu == 2)
@@ -3283,12 +3285,12 @@ play_game (char cont)
   if ((!notbyebye) || (level_is_finished == 15))
     l = 255;
   uninit_keyboard_map ();
+  key_or_joy_reset ();
   unload_level ();
   nbr_tiles_cols = 15;
   in_menu = 1;
-/* if (l!=0) cont=0; */
 
-  return (l);
+  return l;
 }
 
 int

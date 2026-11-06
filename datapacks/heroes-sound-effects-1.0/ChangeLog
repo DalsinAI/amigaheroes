@@ -1,0 +1,12 @@
+2000-09-02  Alexandre Duret-Lutz  <duret_g@epita.fr>
+
+	* configure.in: Set version to 1.0.
+	* NEWS: Update.
+	* install-sh: Update from Autoconf 2.49a.
+	* missing: Likewise.
+	* mkinstalldirs: Likewise.
+	* INSTALL: Likewise.
+
+2000-07-30  Alexandre Duret-Lutz  <duret_g@epita.fr>
+
+	Initial revision (prior versions belonged to the heroes tree).

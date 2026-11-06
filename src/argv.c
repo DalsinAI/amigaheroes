@@ -46,7 +46,13 @@ char* level_name;
 bool mono = false;
 bool bits8 = false;
 bool hqmix = false;
+#ifdef __amigaos__
+/* AmigaOS: 640x400 (--double) by default; 320x200 is a stamp on an RTG
+   Workbench */
+int stretch = 2;
+#else
 int stretch = 1;
+#endif
 bool nosound = false;
 bool even_lines = false;
 bool showprefs = false;
