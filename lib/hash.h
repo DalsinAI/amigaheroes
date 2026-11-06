@@ -25,7 +25,7 @@
 # define HASH_H_
 
 # ifndef PARAMS
-#  if PROTOTYPES || __STDC__
+#  if defined PROTOTYPES || (defined __STDC__ && __STDC__)
 #   define PARAMS(Args) Args
 #  else
 #   define PARAMS(Args) ()

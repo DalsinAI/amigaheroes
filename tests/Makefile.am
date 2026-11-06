@@ -28,7 +28,8 @@ INCLUDES = \
 AM_CFLAGS = $(MORE_WARNINGS_CFLAGS)
 
 EXTRA_DIST = defs $(TESTS)
-TESTS = demo.test intro.test lvlsave.test
+# demo.test and intro.test require a display
+TESTS = lvlsave.test
 
 check_PROGRAMS = lvlsave
 

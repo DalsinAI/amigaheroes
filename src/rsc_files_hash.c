@@ -139,7 +139,7 @@ static struct rsc_file rsc_set[] =
     {"",0,0,0,false},
     {"user-conf",		"$(user-dir)/heroesrc",			0,0,true},
     {"score-file",		"$(user-dir)/scores",			0,0,true},
-    {"system-conf",		"$(data-dir)/etc/heroesrc",		0,0,true},
+    {"system-conf",		"/etc/heroesrc",			0,0,true},
     {"menu-pictures-img",	"$(data-dir)/pics/fontem2.pcx",		0,0,true},
     {"",0,0,0,false}, {"",0,0,0,false}, {"",0,0,0,false},
     {"editor-preview-prefix",  "$(data-dir)/pics/editp",		0,0,true},

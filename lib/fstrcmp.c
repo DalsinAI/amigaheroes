@@ -155,16 +155,8 @@ struct partition
 	cause suboptimal diff output.  It cannot cause incorrect diff
 	output.  */
 
-static int diag PARAMS ((int, int, int, int, int, struct partition *));
-
 static int
-diag (xoff, xlim, yoff, ylim, minimal, part)
-     int xoff;
-     int xlim;
-     int yoff;
-     int ylim;
-     int minimal;
-     struct partition *part;
+diag (int xoff, int xlim, int yoff, int ylim, int minimal, struct partition *part)
 {
   int *const fd = fdiag;	/* Give the compiler a chance. */
   int *const bd = bdiag;	/* Additional help for the compiler. */
@@ -482,15 +474,8 @@ diag (xoff, xlim, yoff, ylim, minimal, part)
 	If MINIMAL is nonzero, find a minimal difference no matter how
 	expensive it is.  */
 
-static void compareseq PARAMS ((int, int, int, int, int));
-
 static void
-compareseq (xoff, xlim, yoff, ylim, minimal)
-     int xoff;
-     int xlim;
-     int yoff;
-     int ylim;
-     int minimal;
+compareseq (int xoff, int xlim, int yoff, int ylim, int minimal)
 {
   const char *const xv = string[0].data;	/* Help the compiler.  */
   const char *const yv = string[1].data;
@@ -578,9 +563,7 @@ compareseq (xoff, xlim, yoff, ylim, minimal)
 	similar.  */
 
 double
-fstrcmp (string1, string2)
-     const char *string1;
-     const char *string2;
+fstrcmp (const char *string1, const char *string2)
 {
   int i;
 

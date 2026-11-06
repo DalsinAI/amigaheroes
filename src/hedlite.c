@@ -45,6 +45,7 @@
 #include "dirname.h"
 
 static a_pcx_image heditrsc;
+#define tile_set_img tile_set_img_hedlite
 static a_pcx_image tile_set_img;
 
 unsigned short int xdalles = 0;

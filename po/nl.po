@@ -1639,7 +1639,7 @@ msgstr "%s: niet zo'n kanaal (--list=debug zal alle bekende kanalen geven)"
 #, c-format
 msgid ""
 "Cannot open %s, disabling sound-effects\n"
-"(run with -X to supress this message)."
+"(run with -X to suppress this message)."
 msgstr ""
 "Kan `%s' niet openen, zet geluids-effecten uit\n"
 "(draai met -X om dit bericht te onderdrukken)."

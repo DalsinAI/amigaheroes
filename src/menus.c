@@ -219,7 +219,8 @@ a_menu_entry editor_entries[] = {
   { N_("NEW LEVEL"),	editor_menu },
   /* TRANS: Load an existing level for edition.  */
   { N_("LOAD LEVEL"),	editor_selector },
-  { N_("GO BACK"),	0 }
+  { N_("GO BACK"),	0 },
+  { 0,			0 }
 };
 
 a_menu *editor_menu_data;
@@ -2122,6 +2123,7 @@ pause_menu (void)
   corner[0] = render_buffer[0];
 
   uninit_keyboard_map ();
+  key_or_joy_reset ();
   std_white_fadein (&dummy_background_img.palette);
   do {
     dummy_moving_background_render ();
@@ -2157,13 +2159,8 @@ quit_yes_no (void)
 
   corner[0] = render_buffer[0];
 
-  if (opt.ctrl_one || opt.ctrl_two)
-    do {
-      get_joystick_state ();
-      flush_display (corner[0]);
-    } while (joystick_b[0] || joystick_b[1]);
-
   uninit_keyboard_map ();
+  key_or_joy_reset ();
   halve_volume ();
   event_sfx (85);
   std_white_fadein (&dummy_background_img.palette);

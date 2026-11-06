@@ -25,8 +25,8 @@
 /* the three macro below configure the rendering buffers used in the game */
 #define xbuf 512		/* large width to suppress any clipping need,
 				   power of two of easier multiplications */
-#define ybuf 300		/* height */
-#define sbuf (50*xbuf)		/* keep sbuf empty line on top of the buffers
+#define ybuf 320		/* height */
+#define sbuf (60*xbuf)		/* keep sbuf empty line on top of the buffers
 				   (to avoid clipping) */
 
 

@@ -1655,7 +1655,7 @@ msgstr "%s: canale inesistente (--list=debug elenca tutti i canali)"
 #, c-format
 msgid ""
 "Cannot open %s, disabling sound-effects\n"
-"(run with -X to supress this message)."
+"(run with -X to suppress this message)."
 msgstr ""
 "Impossibile aprire %s, disabilito gli effetti sonori\n"
 "(esegui con l'opzione -X per eliminare questo messaggio)."

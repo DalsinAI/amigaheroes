@@ -23,7 +23,7 @@
 
 #include "video.h"
 
-typedef struct pcx_header_type
+typedef struct ATTRIBUTE_PACKED pcx_header_type
 {
   a_u8 signature;
   a_u8 version;
@@ -39,9 +39,9 @@ typedef struct pcx_header_type
   a_u16 palette_kind;
   a_u8 rien[58];
 }
-a_pcx_header ATTRIBUTE_PACKED;
+a_pcx_header;
 
-typedef struct
+typedef struct ATTRIBUTE_PACKED
 {
   a_u8 r, g, b;
 }
@@ -54,7 +54,7 @@ typedef union
 }
 a_palette;
 
-typedef struct img_type
+typedef struct ATTRIBUTE_PACKED img_type
 {
   a_pcx_header header;
   a_palette palette;

@@ -27,9 +27,9 @@
 
 #ifdef linux
 
-#include <asm/byteorder.h>
-#define BSWAP16(x) __arch__swab16(x)
-#define BSWAP32(x) __arch__swab32(x)
+#include <linux/swab.h>
+#define BSWAP16(x) __swab16(x)
+#define BSWAP32(x) __swab32(x)
 
 #else /* ! linux */
 

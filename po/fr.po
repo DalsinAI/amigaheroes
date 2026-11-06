@@ -1663,7 +1663,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Cannot open %s, disabling sound-effects\n"
-"(run with -X to supress this message)."
+"(run with -X to suppress this message)."
 msgstr ""
 "Impossible d'ouvrir %s, les bruitages sont désactivés.\n"
 "(lancez avec -X pour supprimer ce message)."
