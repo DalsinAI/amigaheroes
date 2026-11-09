@@ -111,6 +111,7 @@ dist: $(BUILD)/$(PROG) $(ICONS) AMIGA_PORT.md
 	cp src/etc/heroesrc $(OUT)/data/etc/
 	find $(OUT)/data -name 'Makefile*' -delete
 	cp AMIGA_PORT.md $(OUT)/ReadMe
+	cp amiga/Controls $(OUT)/Controls
 	cp doc/heroes.html $(OUT)/
 	cp COPYING $(OUT)/COPYING.txt
 	cp amiga/libmikmod/COPYING.LIB $(OUT)/COPYING-libmikmod.txt
