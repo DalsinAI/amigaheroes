@@ -116,7 +116,6 @@ dist: $(BUILD)/$(PROG) $(ICONS) AMIGA_PORT.md
 	cp amiga/libmikmod/COPYING.LIB $(OUT)/COPYING-libmikmod.txt
 	cp amiga/icons/Heroes.info amiga/icons/ReadMe.info $(OUT)/
 	for f in COPYING.txt COPYING-libmikmod.txt heroes.html; do cp amiga/icons/ReadMe.info $(OUT)/$$f.info; done
-	cp amiga/icons/Folder.info $(OUT)/data.info
 	cp amiga/icons/Heroes-drawer.info dist/Heroes.info
 
 -include $(OBJS:.o=.d)
